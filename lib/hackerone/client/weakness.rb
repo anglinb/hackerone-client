@@ -3,7 +3,7 @@ module HackerOne
     class Weakness
       class << self
         def extract_cwe_number(cwe)
-          return if cwe.nil?
+          return if cwe.nil? || cwe.to_s.empty?
           fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
 
           cwe.split('CWE-').last.to_i
