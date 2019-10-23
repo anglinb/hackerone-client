@@ -25,7 +25,8 @@ jobs:
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and test with Rake
       run: |
-        gem install bundler
+        gem uninstall bundler || true
+        gem install bundler --version '1.0.0'
         bundle install --jobs 4 --retry 3
         bundle exec rake test
   
