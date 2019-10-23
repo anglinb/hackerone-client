@@ -28,7 +28,7 @@ jobs:
         gem uninstall bundler || true
         gem install bundler --version '1.0.0'
         bundle install --jobs 4 --retry 3
-        bundle exec rake test
+        bundle exec rake spec
   
       
 #     - name: Publish to GPR
