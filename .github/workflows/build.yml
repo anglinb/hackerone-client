@@ -20,7 +20,7 @@ jobs:
       with:
         version: 2.6.x
     - name: Lint with rubocop
-      uses: gimenete/rubocop-action@v1.0
+      uses: gimenete/rubocop-action@1.0
     - name: Build and test with Rake
       run: |
         gem install bundler
