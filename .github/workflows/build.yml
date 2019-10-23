@@ -1,16 +1,9 @@
-name: Ruby Gem
-
-on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+name: Build + Test
+on: [push]
 
 jobs:
   build:
-    name: Build + Publish
+    name: Build + Test
     runs-on: ubuntu-latest
 
     steps:
