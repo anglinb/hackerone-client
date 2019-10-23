@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './resource_helper'
 require_relative './weakness'
 require_relative './activity'
@@ -7,7 +9,7 @@ module HackerOne
     class Report
       include ResourceHelper
 
-      STATES = %w(
+      STATES = %w[
         new
         triaged
         needs-more-info
@@ -16,13 +18,13 @@ module HackerOne
         informative
         duplicate
         spam
-      ).map(&:to_sym).freeze
+      ].map(&:to_sym).freeze
 
-      STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
+      STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w[
         needs-more-info
         informative
         duplicate
-      ).map(&:to_sym).freeze
+      ].map(&:to_sym).freeze
 
       class << self
         def add_on_state_change_hook(proc)
@@ -76,8 +78,6 @@ module HackerOne
       def assignee
         if assignee_relationship = relationships[:assignee]
           HackerOne::Client::User.new(assignee_relationship[:data])
-        else
-          nil
         end
       end
 
@@ -94,13 +94,13 @@ module HackerOne
       def risk
         case payment_total
         when HackerOne::Client.low_range || DEFAULT_LOW_RANGE
-          "low"
+          'low'
         when HackerOne::Client.medium_range || DEFAULT_MEDIUM_RANGE
-          "medium"
+          'medium'
         when HackerOne::Client.high_range || DEFAULT_HIGH_RANGE
-          "high"
+          'high'
         when HackerOne::Client.critical_range || DEFAULT_CRITICAL_RANGE
-          "critical"
+          'critical'
         end
       end
 
@@ -118,7 +118,7 @@ module HackerOne
 
       # Bounty writeups just use the key, and not the label value.
       def writeup_classification
-        classification_label().split("-").first
+        classification_label.split('-').first
       end
 
       def activities
@@ -185,7 +185,7 @@ module HackerOne
 
         old_state = self.state
         body = {
-          type: "state-change",
+          type: 'state-change',
           attributes: {
             state: state
           }
@@ -196,10 +196,10 @@ module HackerOne
         if message
           body[:attributes][:message] = message
         elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
-          fail ArgumentError, "State #{state} requires a message. No message was supplied."
+          raise ArgumentError, "State #{state} requires a message. No message was supplied."
         else
           # message is in theory optional, but a value appears to be required.
-          body[:attributes][:message] = ""
+          body[:attributes][:message] = ''
         end
         response_json = make_post_request("reports/#{id}/state_changes", request_body: body)
         @report = response_json
@@ -218,7 +218,7 @@ module HackerOne
       # no report is found.
       def add_report_reference(reference)
         body = {
-          type: "issue-tracker-reference-id",
+          type: 'issue-tracker-reference-id',
           attributes: {
             reference: reference
           }
@@ -247,10 +247,10 @@ module HackerOne
       # message: the content of the comment that will be created
       # internal: "team only" comment (true, default) or "all participants"
       def add_comment(message, internal: true)
-        fail ArgumentError, "message is required" if message.blank?
+        raise ArgumentError, 'message is required' if message.blank?
 
         body = {
-          type: "activity-comment",
+          type: 'activity-comment',
           attributes: {
             message: message,
             internal: internal
@@ -299,7 +299,7 @@ module HackerOne
 
       def _assign_to(assignee_id, assignee_type)
         request_body = {
-          type: assignee_type,
+          type: assignee_type
         }
         request_body[:id] = assignee_id if assignee_id
 
@@ -308,9 +308,7 @@ module HackerOne
           req.url "reports/#{id}/assignee"
           req.body = { data: request_body }.to_json
         end
-        unless response.success?
-          fail("Unable to assign report #{id} to #{assignee_type} with id '#{assignee_id}'. Response status: #{response.status}, body: #{response.body}")
-        end
+        raise("Unable to assign report #{id} to #{assignee_type} with id '#{assignee_id}'. Response status: #{response.status}, body: #{response.body}") unless response.success?
 
         @report = parse_response response
       end

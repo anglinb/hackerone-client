@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'active_support/core_ext/hash'
 
@@ -126,29 +128,29 @@ RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::CommentAdded do
     let(:example) do
       {
-        "id" => "1337",
-        "type" => "activity-comment",
-        "attributes" => {
-          "message" => "A fix has been deployed. Can you retest, please?",
-          "created_at" => "2016-02-02T04:05:06.000Z",
-          "updated_at" => "2016-02-02T04:05:06.000Z",
-          "internal" => false
+        'id' => '1337',
+        'type' => 'activity-comment',
+        'attributes' => {
+          'message' => 'A fix has been deployed. Can you retest, please?',
+          'created_at' => '2016-02-02T04:05:06.000Z',
+          'updated_at' => '2016-02-02T04:05:06.000Z',
+          'internal' => false
         },
-        "relationships" => {
-          "actor" => {
-            "data" => {
-              "id" => "1337",
-              "type" => "user",
-              "attributes" => {
-                "username" => "api-example",
-                "name" => "API Example",
-                "disabled" => false,
-                "created_at" => "2016-02-02T04:05:06.000Z",
-                "profile_picture" => {
-                  "62x62" => "/assets/avatars/default.png",
-                  "82x82" => "/assets/avatars/default.png",
-                  "110x110" => "/assets/avatars/default.png",
-                  "260x260" => "/assets/avatars/default.png"
+        'relationships' => {
+          'actor' => {
+            'data' => {
+              'id' => '1337',
+              'type' => 'user',
+              'attributes' => {
+                'username' => 'api-example',
+                'name' => 'API Example',
+                'disabled' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z',
+                'profile_picture' => {
+                  '62x62' => '/assets/avatars/default.png',
+                  '82x82' => '/assets/avatars/default.png',
+                  '110x110' => '/assets/avatars/default.png',
+                  '260x260' => '/assets/avatars/default.png'
                 }
               }
             }
@@ -169,47 +171,47 @@ RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::UserAssignedToBug do
     let(:example) do
       {
-        "id" => "1337",
-        "type" => "activity-user-assigned-to-bug",
-        "attributes" => {
-          "message" => "User Assigned To Bug!",
-          "created_at" => "2016-02-02T04:05:06.000Z",
-          "updated_at" => "2016-02-02T04:05:06.000Z",
-          "internal" => true
+        'id' => '1337',
+        'type' => 'activity-user-assigned-to-bug',
+        'attributes' => {
+          'message' => 'User Assigned To Bug!',
+          'created_at' => '2016-02-02T04:05:06.000Z',
+          'updated_at' => '2016-02-02T04:05:06.000Z',
+          'internal' => true
         },
-        "relationships" => {
-          "actor" => {
-            "data" => {
-              "id" => "1337",
-              "type" => "user",
-              "attributes" => {
-                "username" => "api-example",
-                "name" => "API Example",
-                "disabled" => false,
-                "created_at" => "2016-02-02T04:05:06.000Z",
-                "profile_picture" => {
-                  "62x62" => "/assets/avatars/default.png",
-                  "82x82" => "/assets/avatars/default.png",
-                  "110x110" => "/assets/avatars/default.png",
-                  "260x260" => "/assets/avatars/default.png"
+        'relationships' => {
+          'actor' => {
+            'data' => {
+              'id' => '1337',
+              'type' => 'user',
+              'attributes' => {
+                'username' => 'api-example',
+                'name' => 'API Example',
+                'disabled' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z',
+                'profile_picture' => {
+                  '62x62' => '/assets/avatars/default.png',
+                  '82x82' => '/assets/avatars/default.png',
+                  '110x110' => '/assets/avatars/default.png',
+                  '260x260' => '/assets/avatars/default.png'
                 }
               }
             }
           },
-          "assigned_user" => {
-            "data" => {
-              "id" => "1336",
-              "type" => "user",
-              "attributes" => {
-                "username" => "other_user",
-                "name" => "Other User",
-                "disabled" => false,
-                "created_at" => "2016-02-02T04:05:06.000Z",
-                "profile_picture" => {
-                  "62x62" => "/assets/avatars/default.png",
-                  "82x82" => "/assets/avatars/default.png",
-                  "110x110" => "/assets/avatars/default.png",
-                  "260x260" => "/assets/avatars/default.png"
+          'assigned_user' => {
+            'data' => {
+              'id' => '1336',
+              'type' => 'user',
+              'attributes' => {
+                'username' => 'other_user',
+                'name' => 'Other User',
+                'disabled' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z',
+                'profile_picture' => {
+                  '62x62' => '/assets/avatars/default.png',
+                  '82x82' => '/assets/avatars/default.png',
+                  '110x110' => '/assets/avatars/default.png',
+                  '260x260' => '/assets/avatars/default.png'
                 }
               }
             }
@@ -229,29 +231,29 @@ RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::BugTriaged do
     let(:example) do
       {
-        "id" => "1337",
-        "type" => "activity-bug-triaged",
-        "attributes" => {
-          "message" => "Bug Triaged!",
-          "created_at" => "2016-02-02T04:05:06.000Z",
-          "updated_at" => "2016-02-02T04:05:06.000Z",
-          "internal" => false
+        'id' => '1337',
+        'type' => 'activity-bug-triaged',
+        'attributes' => {
+          'message' => 'Bug Triaged!',
+          'created_at' => '2016-02-02T04:05:06.000Z',
+          'updated_at' => '2016-02-02T04:05:06.000Z',
+          'internal' => false
         },
-        "relationships" => {
-          "actor" => {
-            "data" => {
-              "id" => "1337",
-              "type" => "user",
-              "attributes" => {
-                "username" => "api-example",
-                "name" => "API Example",
-                "disabled" => false,
-                "created_at" => "2016-02-02T04:05:06.000Z",
-                "profile_picture" => {
-                  "62x62" => "/assets/avatars/default.png",
-                  "82x82" => "/assets/avatars/default.png",
-                  "110x110" => "/assets/avatars/default.png",
-                  "260x260" => "/assets/avatars/default.png"
+        'relationships' => {
+          'actor' => {
+            'data' => {
+              'id' => '1337',
+              'type' => 'user',
+              'attributes' => {
+                'username' => 'api-example',
+                'name' => 'API Example',
+                'disabled' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z',
+                'profile_picture' => {
+                  '62x62' => '/assets/avatars/default.png',
+                  '82x82' => '/assets/avatars/default.png',
+                  '110x110' => '/assets/avatars/default.png',
+                  '260x260' => '/assets/avatars/default.png'
                 }
               }
             }
@@ -270,31 +272,31 @@ RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::ReferenceIdAdded do
     let(:example) do
       {
-        "id" => "1337",
-        "type" => "activity-reference-id-added",
-        "attributes" => {
-          "message" => "Reference Id Added!",
-          "created_at" => "2016-02-02T04:05:06.000Z",
-          "updated_at" => "2016-02-02T04:05:06.000Z",
-          "internal" => true,
-          "reference" => "reference",
-          "reference_url" => "https://example.com/reference"
+        'id' => '1337',
+        'type' => 'activity-reference-id-added',
+        'attributes' => {
+          'message' => 'Reference Id Added!',
+          'created_at' => '2016-02-02T04:05:06.000Z',
+          'updated_at' => '2016-02-02T04:05:06.000Z',
+          'internal' => true,
+          'reference' => 'reference',
+          'reference_url' => 'https://example.com/reference'
         },
-        "relationships" => {
-          "actor" => {
-            "data" => {
-              "id" => "1337",
-              "type" => "user",
-              "attributes" => {
-                "username" => "api-example",
-                "name" => "API Example",
-                "disabled" => false,
-                "created_at" => "2016-02-02T04:05:06.000Z",
-                "profile_picture" => {
-                  "62x62" => "/assets/avatars/default.png",
-                  "82x82" => "/assets/avatars/default.png",
-                  "110x110" => "/assets/avatars/default.png",
-                  "260x260" => "/assets/avatars/default.png"
+        'relationships' => {
+          'actor' => {
+            'data' => {
+              'id' => '1337',
+              'type' => 'user',
+              'attributes' => {
+                'username' => 'api-example',
+                'name' => 'API Example',
+                'disabled' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z',
+                'profile_picture' => {
+                  '62x62' => '/assets/avatars/default.png',
+                  '82x82' => '/assets/avatars/default.png',
+                  '110x110' => '/assets/avatars/default.png',
+                  '260x260' => '/assets/avatars/default.png'
                 }
               }
             }
@@ -307,8 +309,8 @@ RSpec.describe HackerOne::Client::Activities do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
-      expect(activity.reference).to eq "reference"
-      expect(activity.reference_url).to eq "https://example.com/reference"
+      expect(activity.reference).to eq 'reference'
+      expect(activity.reference_url).to eq 'https://example.com/reference'
     end
   end
 end

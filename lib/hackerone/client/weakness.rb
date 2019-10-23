@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 module HackerOne
   module Client
     class Weakness
       class << self
         def validate_cwe!(cwe)
-          fail NotAnOwaspWeaknessError if cwe.upcase.start_with?('CAPEC-')
-          fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
+          raise NotAnOwaspWeaknessError if cwe.upcase.start_with?('CAPEC-')
+          raise StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
         end
 
         def extract_cwe_number(cwe)
           return if cwe.nil?
+
           validate_cwe!(cwe)
 
           cwe.split('CWE-').last.to_i
@@ -17,26 +20,26 @@ module HackerOne
 
       class NotAnOwaspWeaknessError < StandardError
         def message
-          "CAPEC labels do not describe OWASP weaknesses"
+          'CAPEC labels do not describe OWASP weaknesses'
         end
       end
 
       CLASSIFICATION_MAPPING = {
-        "None Applicable" => "A0-Other",
-        "Denial of Service" => "A0-Other",
-        "Memory Corruption" => "A0-Other",
-        "Cryptographic Issue" => "A0-Other",
-        "Privilege Escalation" => "A0-Other",
-        "UI Redressing (Clickjacking)" => "A0-Other",
-        "Command Injection" => "A1-Injection",
-        "Remote Code Execution" => "A1-Injection",
-        "SQL Injection" => "A1-Injection",
-        "Authentication" => "A2-AuthSession",
-        "Cross-Site Scripting (XSS)" => "A3-XSS",
-        "Information Disclosure" => "A6-DataExposure",
-        "Cross-Site Request Forgery (CSRF)" => "A8-CSRF",
-        "Unvalidated / Open Redirect" => "A10-Redirects"
-      }
+        'None Applicable' => 'A0-Other',
+        'Denial of Service' => 'A0-Other',
+        'Memory Corruption' => 'A0-Other',
+        'Cryptographic Issue' => 'A0-Other',
+        'Privilege Escalation' => 'A0-Other',
+        'UI Redressing (Clickjacking)' => 'A0-Other',
+        'Command Injection' => 'A1-Injection',
+        'Remote Code Execution' => 'A1-Injection',
+        'SQL Injection' => 'A1-Injection',
+        'Authentication' => 'A2-AuthSession',
+        'Cross-Site Scripting (XSS)' => 'A3-XSS',
+        'Information Disclosure' => 'A6-DataExposure',
+        'Cross-Site Request Forgery (CSRF)' => 'A8-CSRF',
+        'Unvalidated / Open Redirect' => 'A10-Redirects'
+      }.freeze
 
       OWASP_TOP_10_2013_TO_CWE = {
         'A1-Injection' => [77, 78, 88, 89, 90, 91, 564],
@@ -49,10 +52,10 @@ module HackerOne
         'A7-MissingACL' => [285, 287],
         'A8-CSRF' => [352, 642, 613, 346, 441],
         'A9-KnownVuln' => [],
-        'A10-Redirects' => [601],
+        'A10-Redirects' => [601]
       }.freeze
 
-      OWASP_DEFAULT = 'A0-Other'.freeze
+      OWASP_DEFAULT = 'A0-Other'
 
       def initialize(weakness)
         @attributes = weakness

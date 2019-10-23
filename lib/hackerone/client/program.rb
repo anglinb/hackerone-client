@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './resource_helper'
 
 module HackerOne
@@ -82,11 +84,11 @@ module HackerOne
       def self.my_programs
         @my_programs ||= begin
           response = HackerOne::Client::Api.hackerone_api_connection.get do |req|
-            req.url "me/programs"
+            req.url 'me/programs'
           end
 
           data = HackerOne::Client::Api.parse_response(response)
-          data.map { |program| self.new(program) }
+          data.map { |program| new(program) }
         end
       end
     end

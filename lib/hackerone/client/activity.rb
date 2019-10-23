@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HackerOne
   module Client
     module Activities
@@ -28,13 +30,13 @@ module HackerOne
 
       class BountyAwarded < Activity
         def bounty_amount
-          formatted_bounty_amount = attributes.bounty_amount || "0"
-          formatted_bounty_amount.gsub(/[^\d]/, "").to_i
+          formatted_bounty_amount = attributes.bounty_amount || '0'
+          formatted_bounty_amount.gsub(/[^\d]/, '').to_i
         end
 
         def bonus_amount
-          formatted_bonus_amount = attributes.bonus_amount || "0"
-          formatted_bonus_amount.gsub(/[^\d]/, "").to_i
+          formatted_bonus_amount = attributes.bonus_amount || '0'
+          formatted_bonus_amount.gsub(/[^\d]/, '').to_i
         end
       end
 
