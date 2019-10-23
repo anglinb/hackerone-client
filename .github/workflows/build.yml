@@ -12,10 +12,10 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         version: 2.6.x
-#     - name: Lint with rubocop
-#       uses: gimenete/rubocop-action@1.0
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Lint with rubocop
+      uses: gimenete/rubocop-action@1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and test with Rake
       run: |
         gem uninstall bundler || true
