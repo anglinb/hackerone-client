@@ -14,6 +14,7 @@ jobs:
         version: 2.6.x
     - name: Build and test with Rake
       run: |
-        gem install bundler
+        gem uninstall bundler || true
+        gem install bundler --version '1.14.4'
         bundle install --jobs 4 --retry 3
         bundle exec rake spec
